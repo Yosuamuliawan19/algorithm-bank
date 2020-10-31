@@ -1,10 +1,13 @@
 class Solution {
 public:
     void reverseString(vector<char>& s) {
-        for (int i=0;i<s.size()/2;i++){            
-            char temp = s[s.size()-i-1];
-            s[s.size()-i-1] = s[i];
-            s[i] = temp;
+        int l = 0 , r = s.size()-1;
+        while (r > l){
+            // cout << l << " " << r << endl;
+            char temp = s[l];
+            s[l] = s[r];
+            s[r] = temp;
+            l++;r--;
         }
     }
 };

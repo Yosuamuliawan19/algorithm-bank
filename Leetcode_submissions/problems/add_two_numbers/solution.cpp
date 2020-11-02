@@ -3,42 +3,49 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
 public:
+    vector<ListNode> num1, num2;
+    void trav(ListNode* node, vector<ListNode> & num){
+        if (node == nullptr) return;
+        num.push_back(*node);
+        trav(node->next, num);
+    } 
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode *ans = new ListNode(0);
-        ListNode *prev = new ListNode(0);
-        ans->next = prev;
-        long long carry = 0;
-        while (l1 != NULL || l2 != NULL){
-            int a = 0, b = 0;
-            if (l1 != NULL) {
-                a = l1->val;
-                l1 = l1->next;
+        trav(l1, num1);
+        trav(l2, num2);
+        int i = 0, j = 0;
+        // for (auto i: num1) cout << i.val << endl;
+        // cout << "edad\n";
+        // for (auto i: num2) cout << i.val << endl;
+        int carry = 0;
+        vector<int> ans;
+        while (i < num1.size()|| j < num2.size()){
+            int cur = carry; carry = 0;
+            if (i < num1.size() ) cur += num1[i++].val;
+            if (j < num2.size()) cur += num2[j++].val;
+            // cout << cur << endl;
+            if (cur >= 10){
+                cur -= 10;
+                carry = 1;
             }
-            if (l2 != NULL) {
-                b = l2->val;
-                l2 = l2->next;
-            }
-            long long x = a + b + carry;
-            carry = 0;
-            if (x > 9){
-                carry = x / 10;
-                x = x % 10;
-            }
-            ListNode *cur = new ListNode(x);
-            prev->next = cur;
-            prev = cur;
+            ans.push_back(cur);
         }
-        if (carry > 0){
-            ListNode *cur = new ListNode(carry);
-            prev->next = cur;
-            prev = cur;
+        if (carry > 0) ans.push_back(carry);
+        ListNode *head = new ListNode(0);
+        ListNode *cur = head;
+        // cout << "hey\n"; 
+        for (int i=0; i < ans.size(); i++){
+            // cout << ans[i] << endl;
+            cur->next = new ListNode(ans[i]);
+            cur = cur->next;
         }
+        return head->next;
         
-        return ans->next->next;
     }
 };

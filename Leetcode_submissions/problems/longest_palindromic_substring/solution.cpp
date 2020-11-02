@@ -1,30 +1,22 @@
 class Solution {
 public:
+    int x = 0, y = 0;
+    bool isPalindrome(int i, int j, string& s){
+        while (j > i){
+            if (s[i] != s[j]) return 0;
+            i++;j--;
+        }
+        return 1;
+    }
     string longestPalindrome(string s) {
-        int l, r;
-        for (int i=s.length();i>=0;i--){
-            // cout << "Tested length: " << i << "\n";
-            for (int j=0;j<=s.length()-i;j++){
-                // cout << s.substr(j, j+i) << " " << j << " " << j+i << "\n";
-                l = j, r = j+i-1; bool f = 1;
-                while (r > l){
-                    // cout << s[l] <<" " << s[r] << endl;
-                    if (s[l++] != s[r--]){
-                        f = 0;
-                        break;
-                    }
+        for (int i=0;i<s.length();i++){
+            for (int j=s.length()-1;j>=i;j--){
+                // cout << s.substr(i, j-i+1) << endl;
+                if (j-i > y-x && isPalindrome(i, j, s)){
+                    x = i; y = j;
                 }
-                
-                if (f){
-                    string ans = "";
-                    for (int t=j;t<=j+i-1;t++){
-                        ans += s[t];
-                    }
-                    return ans ;
-                }
-                // cout << f << endl;
             }
         }
-        return "";
+        return s.substr(x, y-x+1);
     }
 };

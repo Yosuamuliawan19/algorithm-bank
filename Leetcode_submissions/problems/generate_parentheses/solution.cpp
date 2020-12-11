@@ -1,32 +1,23 @@
 class Solution {
 public:
-    
-    int n;
+    int len;
     vector<string> ans;
-    set<string> st;
-    
-    void gen(string f, string b, int len){
-        if (len == n*2){
-            string cur = f + b;
-            if (st.find(cur) == st.end()){
-                ans.push_back(cur);
-                st.insert(cur);
-            }
+    void solve(string cur, string mir){
+        if (cur.length() + mir.length() > len) return;
+        if (cur.length() == len && mir.length() == 0){
+            cout << cur << endl;
+            ans.push_back(cur);
             return;
         }
-        gen(f + '(' , ')' + b, len +2);
-
-        string cur = f;
-        for (int i=0;i<b.length();i++){
-            cur += b[i];
-            gen(cur, b.substr(i+1, b.length()-i), len);
-        }
+        // cout << cur << " " << mir <<endl;
+        solve(cur+"(", ')'+mir);
+        if (mir.length() != 0){
+            solve(cur+ mir[0], mir.substr(1,mir.length()));
+        } 
     }
-    
     vector<string> generateParenthesis(int n) {
-        this->n = n;
-        gen("", "", 0);    
-    
+        len = n*2;
+        solve("", "");
         return ans;
     }
 };

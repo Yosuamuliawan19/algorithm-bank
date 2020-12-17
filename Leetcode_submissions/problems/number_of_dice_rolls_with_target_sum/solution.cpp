@@ -1,55 +1,35 @@
 class Solution {
 public:
-//     int mod = 1e9 + 7;
-//     int targetVal, df;
-//     int ans = 0;
+    long long ans = 0;
+    long long f, target;
+    long long mod = 1000000007; 
     
-//     void solve(int throws, int val){
-//         if (throws == 0){
-//             if (val == targetVal) ans++;
-//             return;
-//         }
-//         int curface = df;
-//         while ((((throws-1) * df) + val + curface) >= targetVal){
-//             solve(throws-1, val+curface);
-//             curface--;
-//         }
-//     }
-//     int numRollsToTarget(int d, int f, int target) {
-//         if (f * d < target) return 0;
-//         targetVal = target; df = f;
-//         solve(d, 0); 
-//         cout << ans <<endl;
-//         return ans;
-//     }
-    
-    int ans = 0, face;
-    int mod = 1e9 + 7;
-    int memo[31][1010];
-    int solve(int throws, int left){
-        if  (memo[throws][left] != -1){
-            return memo[throws][left];
-        } 
-        // cout << throws << " " << left << endl;
-        if (throws == 1){
-            if (left <= face && left != 0) return 1;
+    long long memo[35][1010] = {0};
+    long long rec(long long d, long long sum){
+        if (d == 0){
+            if (sum == 0){
+                return 1;
+            }
             return 0;
-        }   
-        // int cur = (-1*face*(throws-1)) + left; 
-        int cur = 1;
-        int ans = 0;
-        while (left-cur >= throws-1 && cur <= face){
-            // if (face * (throws-1) >= left-cur) solve(throws-1, left-cur);
-            ans = (ans + solve(throws-1, left-cur)) % mod;
-            cur++;
         }
-        return memo[throws][left] = ans % mod;
+        if (d*f < sum) return 0;
+        if (sum <= 0) return 0;
+        if (memo[d][sum] != -1) return memo[d][sum];
+        long long ret = 0;
+        
+        for (int i=f;i>=1;i--){
+            if (sum-i > (d-1) * f) break;
+            ret = (ret + rec(d-1, sum-i))%mod;
+        }
+        return memo[d][sum] = ret%mod;
+
     }
-    
     int numRollsToTarget(int d, int f, int target) {
-        if (f * d < target) return 0;
-        face = f;
+        this->f = min(f, target);
+        this->target = target;
+        
         memset(memo, -1, sizeof(memo));
-        return solve(d, target) % mod; 
+        
+        return rec(d, target);
     }
 };

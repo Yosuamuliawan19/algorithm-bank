@@ -1,53 +1,53 @@
 class Solution {
 public:
+    
     int romanToInt(string s) {
+        
         int ans = 0;
+        
         for (int i=0;i<s.length();i++){
-            char next = 'I';
-            if (i != s.length()-1){
-                next = s[i+1];
-            }
-            
-            
+            // if (i != s.length()-1) cout << s[i] <<  " " << s[i+1] << endl;
             if (s[i] == 'I'){
-               if (next == 'V' ){
-                    ans += 4;
-                   i++; continue;
-               }
-                if (next == 'X'){
-                    ans += 9;
-                    i++; continue;
-                }
-                ans += 1;
-            }else if(s[i] == 'V'){
+                if (i != s.length()-1){
+                    if (s[i+1] == 'V'){
+                        ans += 4;i++;
+                    }else if (s[i+1] == 'X'){
+                        ans += 9;i++;
+                    }else{
+                        ans += 1;
+                    }
+                }else ans += 1;
+            }else if (s[i] == 'V'){
                 ans += 5;
-            }else if(s[i] == 'X'){
-                 if (next == 'L' ){
-                    ans += 40;
-                   i++; continue;
-               }
-                if (next == 'C'){
-                    ans += 90;
-                    i++; continue;
-                }
-                ans += 10;
+            }else if (s[i] == 'X'){
+                if (i != s.length()-1){
+                   
+                    if (s[i+1] == 'L'){
+                        ans += 40;i++;
+                    }else if (s[i+1] == 'C'){
+                        ans += 90;i++;
+                    }else{
+                        ans += 10;
+                    }
+                } else  ans += 10;
             }else if (s[i] == 'L'){
                 ans += 50;
             }else if (s[i] == 'C'){
-                if (next == 'D' ){
-                    ans += 400;
-                   i++; continue;
-               }
-                if (next == 'M'){
-                    ans += 900;
-                    i++; continue;
-                }
-                ans += 100;
+                if (i != s.length()-1){
+                    if (s[i+1] == 'D'){
+                        ans += 400; i++;
+                    }else if (s[i+1] == 'M'){
+                        ans += 900; i++;
+                    }else{
+                        ans += 100;
+                    }
+                } else ans += 100;
             }else if (s[i] == 'D'){
                 ans += 500;
-            }else{
+            }else if (s[i] == 'M'){
                 ans += 1000;
             }
+            // cout << ans << endl;
         }
         return ans;
     }

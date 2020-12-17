@@ -10,42 +10,62 @@
  */
 class Solution {
 public:
-    vector<ListNode> num1, num2;
-    void trav(ListNode* node, vector<ListNode> & num){
-        if (node == nullptr) return;
-        num.push_back(*node);
-        trav(node->next, num);
-    } 
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        trav(l1, num1);
-        trav(l2, num2);
-        int i = 0, j = 0;
-        // for (auto i: num1) cout << i.val << endl;
-        // cout << "edad\n";
-        // for (auto i: num2) cout << i.val << endl;
+        ListNode* a = l1, *b = l2, *c, *d;
         int carry = 0;
-        vector<int> ans;
-        while (i < num1.size()|| j < num2.size()){
-            int cur = carry; carry = 0;
-            if (i < num1.size() ) cur += num1[i++].val;
-            if (j < num2.size()) cur += num2[j++].val;
-            // cout << cur << endl;
-            if (cur >= 10){
-                cur -= 10;
-                carry = 1;
+        
+        while (a != nullptr && b != nullptr){
+            c = a; d = b;
+            carry += a->val + b->val;
+            if (carry >= 10){
+                a->val = (carry%10);
+                b->val = (carry%10);
+                carry /= 10;
+            }else{
+                a->val = carry;
+                b->val = carry;
+                carry = 0;
             }
-            ans.push_back(cur);
+            a = a->next;
+            b = b->next;
         }
-        if (carry > 0) ans.push_back(carry);
-        ListNode *head = new ListNode(0);
-        ListNode *cur = head;
-        // cout << "hey\n"; 
-        for (int i=0; i < ans.size(); i++){
-            // cout << ans[i] << endl;
-            cur->next = new ListNode(ans[i]);
-            cur = cur->next;
+        bool f = 0;
+        while (a != nullptr){
+            c = a;
+            f = 1;
+            carry += a->val;
+            if (carry >= 10){
+                a->val = (carry%10);
+                carry /= 10;
+            }else{
+                a->val = carry;
+                carry = 0;
+            }
+            a = a->next;
         }
-        return head->next;
+        
+        while (b != nullptr){
+            d = b;
+            f = 0;
+            carry += b->val;
+            if (carry >= 10){
+                b->val = (carry%10);
+                carry /= 10;
+            }else{
+                b->val = carry;
+                carry = 0;
+            }
+            b = b->next;
+        }
+        if (carry != 0){
+            if (f){
+                c->next = new ListNode(carry);
+            }else{
+                d->next = new ListNode(carry);
+            }
+        }
+        
+        return (f ? l1: l2);
         
     }
 };

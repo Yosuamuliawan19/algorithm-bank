@@ -1,16 +1,12 @@
-
 class Solution {
 public:
     int heightChecker(vector<int>& heights) {
-        vector<int> s_heights = heights;
-        sort(heights.begin(), heights.end());
-        
+        vector<int> s = heights;
         int ans = 0;
-        for (int i=0;i<heights.size();i++){
-            if (heights[i] != s_heights[i]) ans ++;
-            // cout << heights[i] << " " << s_heights[i] << endl;
+        sort(s.begin(), s.end());
+        for (int i=0;i<s.size();i++){
+            if (s[i] != heights[i]) ans ++;
         }
-            
-        return ans;
+        return ans; 
     }
 };

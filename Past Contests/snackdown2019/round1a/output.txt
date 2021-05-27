@@ -1,0 +1,12 @@
+mgap -1 maxgap 0
+
+mgap -1 maxgap 0
+
+mgap 3 maxgap 3
+3 
+mgap -1 maxgap 0
+
+mgap 3 maxgap 3
+3 
+mgap 2 maxgap 4
+4 2 

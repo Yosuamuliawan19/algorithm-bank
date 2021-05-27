@@ -1,0 +1,16 @@
+2
+4 2 4 4 4
+mandor 1
+mandor 2
+sekretaris 3
+kuli 100
+2 3 1000
+1 4 100
+5 2 0 2 1
+mandor 1
+mandor 2
+mandor 100
+sekretaris 3
+kuli 100
+1 2 1000
+5 3 100

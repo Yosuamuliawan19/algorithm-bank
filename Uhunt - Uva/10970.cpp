@@ -1,0 +1,42 @@
+#include<iostream>
+// #include<stdio.h>
+#include<string>
+#include<cstring>
+#include<algorithm>
+#include<cmath>
+#include<cctype>
+#include<iomanip>
+#include<vector>
+#include<map>
+#include<climits>
+#include<set>
+#include<queue>
+#include<string>
+using namespace std;
+// #include <bits/stdc++.h>
+typedef long long ll;
+typedef pair<int,int> ii;
+typedef vector<ii> vii;
+typedef vector<int> vi;
+#define pb push_back
+#define fi first
+#define se second
+#define mp make_pair
+#define FOR(i,a,b) for(int i=a;i<=b;i++)
+
+
+
+int main(int argc, char const *argv[])
+{
+     ll n,m;
+	while (cin >> n >> m){
+          if (n > m ){
+               int tmp = m;
+               m = n;
+               n = tmp;
+          }
+          cout << (m-1) + (n-1)*(m) << endl;
+     }
+
+	return 0;
+}

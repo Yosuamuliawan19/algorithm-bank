@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Payment</title>
+<link rel="shortcut icon" href="https://ecs7.tokopedia.net/img/favicon.ico">
+<link rel="apple-touch-icon" type="image/png" href="https://ecs7.tokopedia.net/img/favicon.ico">
+</head>
+<body>
+    <script>
+        $('#submitv3').click(function(evt) {
+            $("#cart_form").attr("target", "");
+            $("#cart_form").attr("action", "/v3/payment");
+            $("#cart_form").submit()
+        });
+        $('#submitv3').click();
+    </script>
+    <form action="/v2/payment" method="post" id="cart_form" style="display: none">
+        <input type="text" id="merchant_code" name="merchant_code" value="{{.merchant_code}}">
+        <input type="text" id="profile_code" name="profile_code" value="{{.profile_code}}">
+        <input type="text" id="transaction_id" name="transaction_id" value="{{.transaction_id}}">
+        <input type="text" id="transaction_date" name="transaction_date" value="{{.transaction_date}}">
+        <input type="text" id="gateway_code" name="gateway_code" value="{{.gateway_code}}">
+        <input type="text" id="pid" name="pid" value="{{.gateways}}">
+        <input type="text" id="currency" name="currency" value="{{.currency}}">
+        <input type="text" id="amount" name="amount" value="{{.amount}}">
+        {{if .items}}
+            {{range $item := .items}}
+            <input type="text" id="item_name" name="items[name]" value="{{$item.name}}">
+            <input type="text" id="item_qty" name="items[quantity]" value="{{$item.quantity}}">
+            <input type="text" id="item_price" name="items[price]" value="{{$item.price}}">
+            <br>
+            {{end}}
+        {{end}}
+        <input type="text" id="customer_name" name="customer_name" value="{{.customer_name}}">
+        <input type="text" id="customer_email" name="customer_email" value="{{.customer_email}}">
+        <input type="text" id="customer_msisdn" name="customer_msisdn" value="{{.customer_msisdn}}">
+        <input type="text" id="nid" name="nid" value="{{.voucher_code}}">
+        <input style="width:100%;" type="text" id="user_defined_value" name="user_defined_value" value="{{.user_define_value}}">
+        <input style="width:100%;" type="text" id="payment_metadata" name="payment_metadata" value="{{.payment_metadata}}">
+        <input type="checkbox" id="ovo_promo_enable" name="ovo_promo_enable" value="ovo_promo_enable" onclick="handleClickPromo()"> Use OVO Promo<br>
+        <input type="text" id="language" name="language" value="{{.language}}">
+        <input type="text" id="back_url" name="back_url" value="/merchant/form">
+        <input type="text" id="signature" name="signature" value="{{.signature}}">
+        <input type="button" id="submitv1" value="Submit to V1" />
+        <input type="button" id="submitv2" value="Submit to V2" />
+        <input type="submit" value="Submit to JSON V2" onclick='this.form.target="";this.form.action="/v2/test/payment";this.form.submit();'/>
+        <input type="button" value="Submit to V2.5" onclick='this.form.target="";this.form.action="/v25/payment";this.form.submit();'/>
+        <input type="button" id="submitv3" value="Submit to V3" />
+        <select name="disallow_ovopoints">
+            <option value="true">true</option>
+            <option value="false" selected="selected">false</option>
+        </select>
+        <input type="button" value="Submit to API" onclick='this.form.target="";this.form.action="/v2/instant/payment";this.form.submit();'/>
+        <input id="btnSubmitIFrame" type="button" value="Submit to iFrame"/>
+        <input id="btnSubmitIFrameNew" type="button" value="Submit to New CC" onclick='$("#new_cc_iframe").val("1");this.form.target="";this.form.action="/v2/payment";this.form.submit();'/>
+        <input type="submit" value="Submit to React" onclick='this.form.target="";this.form.action="/v3/payment";this.form.submit();'/>
+        <input type="submit" value="React Dev" onclick='this.form.target="";this.form.action="/v3/payment/helper";this.form.submit();'/>
+        <input id="btnSubmitIFrameReact" type="button" value="Submit to iFrame with React"/>
+        <input id="btnSubmitIFrameReactDev" type="button" value="Submit to iFrame with React Dev"/>
+    </form>
+</html>

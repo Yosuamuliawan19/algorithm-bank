@@ -3,6 +3,7 @@
 A comprehensive collection of algorithms from Leetcode, Codeforces, Uhunt, Hackerrank and more
 
 ## Problem categorization
+Still subject to improvement
 - Ad hoc problems
 - Linear data structures
     - 1D Array

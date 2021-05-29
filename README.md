@@ -59,4 +59,53 @@ Still subject to improvement
         - Unweighted graphs
         - Knight Moves (chess)
         - On weighted graphs (djikstra)
+        - On weighted graphs, negative weights (bellman fords)
+    - Special graphs
+        - Shortest/ longest paths on directed acyclic graphs
+        - Counting paths in DAG
+        - Converting general graph to DAG
+        - Tree
+        - Bipartite graph
+        - Eulerian graph 
+    - Flow problem
+        - Min cut max flow
 
+- Mathematics
+    - Logarithm ,exponentiation, power
+    - Combinatorics
+        - Fibonacci Numbers
+        - Binomial coefficients
+        - Catalan numbers
+    - Number theory
+        - Prime numbers (via sieve of erastosnese)
+        - Prime testing
+        - Finding prime factors
+        - Modified sieve
+        - GCD / LCM
+        - Factorial 
+        - Modular arithmetcic
+        - Divisibility test
+    - Probability thoeries
+        - Probability distribtion functions
+        - MCMC
+    - Game theory 
+- String processing 
+    - Ad hoc
+        - Cipher / Encode / Decode / Decrpty
+        - Input parsing
+        - Regular expression
+        - String comparison
+        - String hashing
+    - String processing with Dynamic programming
+    - String matching
+    - Suffix array
+    - Anagram 
+    - Palindrome
+        - Checking
+        - Generating
+- Basic Geometry
+    - Points
+    - Lines
+    - Circles
+    - Triangles
+    - Quadilaterals

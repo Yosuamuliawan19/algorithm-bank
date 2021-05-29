@@ -1,7 +1,6 @@
 # algorithm-bank
 
-A comprehensive collection of algorithms from Leetcode, Codeforces, Uhunt, Hackerrank and more
-
+A comprehensive collection of algorithms from Leetcode, Codeforces, Uhunt, Hackerrank and more. Contains 1500+ solutions (yet to be categorized )
 ## Problem categorization
 Still subject to improvement
 - Ad hoc problems
@@ -19,9 +18,7 @@ Still subject to improvement
     - Priority Queue
     - Hash Table
     - Balance BST (map)
-- Union-Find Disjoint Sets
-
-
+    - Union-Find Disjoint Sets
 - Paradigms
     - Complete search
         - Recursive backtracking
@@ -109,3 +106,11 @@ Still subject to improvement
     - Circles
     - Triangles
     - Quadilaterals
+## Solution directory
+- [Codeforces](./Codeforces)
+- [Hackerrank](./Hackerrank)
+- [Leetcode](https://leetcode.com/yosuamuliawan19/)
+- [Sphere Online Judge]("./Sphere\sOnline\sJudge")
+- [Uva Online Judge](./Uhunt)
+- [Vjudge](Vjudge)
+- [Past contests]("./Past\sContests")

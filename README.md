@@ -9,6 +9,7 @@ Still subject to improvement
     - 2D Array 
     - N-D Array
 - Sorting
+    - [Quick sort](algorithm-bank/Algorithms/sorting/quicksort.cpp)
 - Bit manipulation
 - Big integer
 - Non-linear data structures
@@ -19,6 +20,20 @@ Still subject to improvement
     - Hash Table
     - Balance BST (map)
     - Union-Find Disjoint Sets
+    - Trees
+        - Binary Trees
+        - Binary Search Trees
+            - AVL Tree
+            - Red Black Tree
+            - Splay Tree
+            - B-Tree
+            - ^ above all does the same thing, self balancing BST
+    - Heap
+    - [Segment Tree](./Algorithms/segment_tree_lazy.cpp)
+        - Lazy propagation
+    - Treap
+    - Trie
+
 - Paradigms
     - Complete search
         - Recursive backtracking
@@ -40,6 +55,8 @@ Still subject to improvement
         
 - Graph
     - Graph Traversal
+        - BFS
+        - DFS
         - Finding connected components
         - Flood fill
         - Topological sort
@@ -55,7 +72,7 @@ Still subject to improvement
     - Single pair shortest path 
         - Unweighted graphs
         - Knight Moves (chess)
-        - On weighted graphs (djikstra)
+        - [On weighted graphs (djikstra)](./Algorithms/dijkstra.cpp)
         - On weighted graphs, negative weights (bellman fords)
     - Special graphs
         - Shortest/ longest paths on directed acyclic graphs
@@ -95,6 +112,7 @@ Still subject to improvement
         - String hashing
     - String processing with Dynamic programming
     - String matching
+        - [Knuth-Morris-Pratt](./Algorithms/kmp.cpp)
     - Suffix array
     - Anagram 
     - Palindrome

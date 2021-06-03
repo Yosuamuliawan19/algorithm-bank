@@ -1,5 +1,7 @@
-#include<iostream>
 // #include<stdio.h>
+// #include <bits/stdc++.h>
+// created By Yosua Muliawan
+#include<iostream>
 #include<string>
 #include<cstring>
 #include<algorithm>
@@ -8,6 +10,7 @@
 #include<iomanip>
 #include<vector>
 #include<map>
+#include<deque>
 #include<sstream>
 #include<climits>
 #include<set>
@@ -15,7 +18,6 @@
 #include<queue>
 #include<string>
 using namespace std;
-// #include <bits/stdc++.h>
 typedef long long ll;
 typedef pair<int,int> ii;
 typedef vector<ii> vii;
@@ -25,14 +27,35 @@ typedef vector<int> vi;
 #define se second
 #define mp make_pair
 #define FOR(i,a,b) for(int i=a;i<=b;i++)
-int n, m;
-
-int main(int argc, char const *argv[])
-{
-	cin >> n >> m;
-	for (int i=0;i<n;i++){
-		cin >> l >> r;
+int n, cnt = 0, f = 0;
+int arr[9] = {4, 16, 37, 58, 89, 145, 42, 20 ,4};
+void rec(int n){
+	// cout << n << endl;
+	if (n == 1){
+		f = 1;
+		return;
 	}
+	if (n == arr[cnt]){
+		cnt ++;
+	}else cnt = 0;
+	if (cnt == 9){
+		f = 0;
+		return;
+	}
+
+	ll sum  = 0;
+	while (n != 0){
+		sum += (n%10) * (n%10);
+		n /= 10;
+	}
+	rec(sum);
+}
+int main()
+{
+	cin >> n;
+	rec(n);
+	if (f) cout << "HAPPY\n";
+	else cout << "UNHAPPY\n";
 
 	return 0;
 }

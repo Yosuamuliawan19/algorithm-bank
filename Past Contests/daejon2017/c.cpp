@@ -25,23 +25,23 @@ typedef vector<int> vi;
 #define se second
 #define mp make_pair
 #define FOR(i,a,b) for(int i=a;i<=b;i++)
-vector<int> adj[100100];
-vector<int> vis(100100, 0);
-ll mx = 0;
-void dfs(ll cur, ll dep){
-     mx = max(dep, mx);
+int ans = 0;
+vector<int> adj[100010];
+vector<bool> vis(100010, 0);
+void dfs(int cur, int dep){
+     ans = max(dep, ans);
      for (int i=0;i<adj[cur].size();i++){
           int nxt = adj[cur][i];
           if (!vis[nxt] && adj[nxt].size() < adj[cur].size()){
                vis[nxt] = 1;
-               dfs(nxt, dep +1);
+               dfs(nxt, dep+1);
                vis[nxt] = 0;
           }
      }
 }
-int main()
+int main(int argc, char const *argv[])
 {
-     ll n, m, a, b;
+	int n, m, a, b;
      cin >> n >> m;
      for (int i=0;i<m;i++){
           cin >> a >> b;
@@ -50,18 +50,15 @@ int main()
      }
      vector<pair<int,int> > lst;
      for (int i=0;i<n;i++){
-          lst.pb(mp(adj[i].size(), i ));
+          lst.pb(mp(adj[i].size(), i));
      }
      sort(lst.begin(), lst.end());
-
      for (int i=n-1;i>=0;i--){
           vis[lst[i].se] = 1;
           dfs(lst[i].se, 1);
           vis[lst[i].se] = 0;
-          if (mx >= i) break;
+          if (ans >= i) break;
      }
-
-     cout << mx << endl;
-
+     cout << ans << endl;
 	return 0;
 }

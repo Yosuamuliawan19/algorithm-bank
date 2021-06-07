@@ -18,19 +18,19 @@ Still subject to improvement
     - 2D Array 
     - N-D Array
 - Sorting
-    - [Quick sort](algorithm-bank/Algorithms/sorting/quicksort.cpp)
+    - [Quick sort](./Algorithms/sorting/quicksort.cpp)
 - Bit manipulation
 - Big integer
 - Non-linear data structures
-    - [Stack](algorithm-bank/Algorithms/stack.cpp)
+    - [Stack](./Algorithms/stack.cpp)
     - List 
-    - [Queue](algorithm-bank/Algorithms/queue.cpp)
+    - [Queue](./Algorithms/queue.cpp)
     - Priority Queue
     - Hash Table
     - Balance BST (map)
     - Union-Find Disjoint Sets
     - Trees
-        - [Binary Trees](algorithm-bank/Algorithms/binary_search.cpp)
+        - [Binary Trees](./Algorithms/binary_search.cpp)
         - Binary Search Trees
             - AVL Tree
             - Red Black Tree

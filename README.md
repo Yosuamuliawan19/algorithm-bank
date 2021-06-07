@@ -22,15 +22,15 @@ Still subject to improvement
 - Bit manipulation
 - Big integer
 - Non-linear data structures
-    - Stack
+    - [Stack](algorithm-bank/Algorithms/stack.cpp)
     - List 
-    - Queue
+    - [Queue](algorithm-bank/Algorithms/queue.cpp)
     - Priority Queue
     - Hash Table
     - Balance BST (map)
     - Union-Find Disjoint Sets
     - Trees
-        - Binary Trees
+        - [Binary Trees](algorithm-bank/Algorithms/binary_search.cpp)
         - Binary Search Trees
             - AVL Tree
             - Red Black Tree
@@ -67,7 +67,7 @@ Still subject to improvement
         - BFS
         - DFS
         - Finding connected components
-        - Flood fill
+        - [Flood fill](./Algorithms/flood_fill.cpp)
         - [Topological sort](./Algorithms/max_flow_and_cut.cpp)
         - Bipartite or cycle check
         - Finding articulation point / bridges
@@ -76,7 +76,7 @@ Still subject to improvement
     - All pairs shortest path 
         - Floyd-Warshall algorithm
     - Minimum spanning tree
-        - Kruskal 
+        - [Kruskal](./Algorithms/minimum_spanning_tree.cpp) 
         - Prims
     - Single pair shortest path 
         - Unweighted graphs

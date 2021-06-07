@@ -103,7 +103,7 @@ Still subject to improvement
         - Binomial coefficients
         - Catalan numbers
     - Number theory
-        - Prime numbers (via sieve of erastosnese)
+        - [Prime numbers (via sieve of erastosnese)](./Algorithms/sieve.cpp)
         - Prime testing
         - Finding prime factors
         - Modified sieve

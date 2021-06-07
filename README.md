@@ -68,7 +68,7 @@ Still subject to improvement
         - DFS
         - Finding connected components
         - Flood fill
-        - Topological sort
+        - [Topological sort](./Algorithms/max_flow_and_cut.cpp)
         - Bipartite or cycle check
         - Finding articulation point / bridges
         - Finding strongly connected components
@@ -91,7 +91,10 @@ Still subject to improvement
         - Bipartite graph
         - Eulerian graph 
     - Flow problem
-        - Min cut max flow
+        - [Min cut max flow](./Algorithms/max_flow_and_cut.cpp)
+        - [Bellman-ford max flow](./Algorithms/bellman.cpp)
+        - [Dinic max flow](./Algorithms/dinic_maxflow.cpp)
+    - [Lowest Common Ancestor](./Algorithms/LCA.cpp)
 
 - Mathematics
     - Logarithm ,exponentiation, power
@@ -133,3 +136,6 @@ Still subject to improvement
     - Circles
     - Triangles
     - Quadilaterals
+    - [Convex hull - Monotone Chain](./Algorithms/monotone_chain.cpp)
+    - [Convex hull - Gift wrapping](./Algorithms/monotone_chain.cpp)
+    - [Line to segment](./Algorithms/line_to_segment.cpp)

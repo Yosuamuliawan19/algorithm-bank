@@ -1,6 +1,6 @@
 # algorithm-bank
 
-A comprehensive collection of algorithms from Leetcode, Codeforces, Uhunt, Hackerrank and more. Contains 1500+ solutions (yet to be categorized )
+My personal collection of algorithms from Leetcode, Codeforces, Uhunt, Hackerrank and more. Contains 1500+ solutions (yet to be categorized )
 ## Solution directory
 - [Codeforces](./Codeforces)
 - [Hackerrank](./Hackerrank)

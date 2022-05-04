@@ -1,11 +1,14 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int n = nums.size();
-        for (int i=0;i<n-1;i++){
-            if (nums[i] == nums[i+1]) return 1;
+        map<int, bool> mp;
+        for (int cur: nums){
+            if (mp.find(cur) != mp.end()){
+                return true;
+            }else{
+                mp[cur] = true;
+            }
         }
-        return 0;
+        return false;
     }
 };

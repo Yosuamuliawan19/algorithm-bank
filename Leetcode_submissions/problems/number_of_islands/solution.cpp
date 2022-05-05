@@ -1,30 +1,31 @@
 class Solution {
 public:
+    void dfs(vector<vector<char>> &g, int x, int y){
+        // check if out of bounds, or already visited / is water
+        if (x == -1 || x >= g.size() ||
+            y == -1 || y >= g[0].size() || g[x][y] == '0') 
+                return;     
+        
+        // mark as visited / water
+        g[x][y] = '0';
+        
+        // go to neighbouring grid
+        dfs(g, x + 1, y);
+        dfs(g,x, y + 1);
+        dfs(g,x - 1, y);
+        dfs(g, x, y - 1);
+    } 
+    
     int numIslands(vector<vector<char>>& grid) {
-        int dirx[4] = {1,0,-1,0};
-        int diry[4] = {0,1,0,-1};
-        int n = grid.size(), m = grid[0].size();
         int ans = 0;
-        for (int i=0;i<n;i++){
-            for (int j=0;j<m;j++){
+        for (int i=0;i<grid.size();i++){
+            for (int j=0;j<grid[0].size(); j++){
                 if (grid[i][j] == '1'){
+                    dfs(grid, i, j);
                     ans ++;
-                    queue<pair<int,int>> q;
-                    q.push(make_pair(i,j));
-                    while (!q.empty()){
-                        pair<int,int> cur = q.front(); q.pop();
-                        grid[cur.first][cur.second] = '0';
-                        for (int k=0;k<4;k++){
-                            int x = cur.first + dirx[k], y = cur.second + diry[k];
-                            if (x >= 0 && x < n && y >=0 && y < m && grid[x][y] == '1'){
-                                q.push(make_pair(x,y));
-                                grid[x][y] = '0';
-                            }
-                        }
-                    }
                 }
             }
-        }
+        }    
         return ans;
     }
 };

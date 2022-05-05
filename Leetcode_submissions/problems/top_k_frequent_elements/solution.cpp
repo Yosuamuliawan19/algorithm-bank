@@ -1,34 +1,39 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        sort(nums.begin(), nums.end());
-        priority_queue<pair<int, int> > pq;
+        unordered_map<int, int> mp;
+        map<int, vector<int> > mp2;
+        vector<int> ans;
         
-        int count = 0, prev = 0;
-        for (int i=0;i<nums.size();i++){
-            if (nums[i] != prev){
-                if (i != 0){
-                    cout << prev <<" " << count << endl;
-                    pq.push(make_pair(count, prev));
-                }
-                prev = nums[i];
-                count = 1;
-            }else
-            count ++;
-            
-            
-            
-            if(i == nums.size()-1){
-                cout << prev <<" " << count << endl;
-                pq.push(make_pair(count, prev));
+        for (int num: nums){
+            if (mp.find(num) != mp.end()){
+                mp[num]++;
+            }else{
+                mp[num] = 1;
             }
         }
         
-        vector<int> ans; 
-        while (k--){
-            pair<int,int> cur = pq.top(); pq.pop();
-            ans.push_back(cur.second);
+        
+        for (auto ent: mp){
+            if (mp2.find(ent.second) == mp2.end()){
+                mp2[ent.second] = vector<int>({ent.first});
+            }else{
+                mp2[ent.second].push_back(ent.first);    
+            }
         }
+        
+        int idx = 0;
+        for (auto iter = mp2.rbegin(); iter != mp2.rend(); iter++){
+            for (int cur: iter->second){
+                ans.push_back(cur);
+                idx ++;
+            }
+            if (idx == k) break;
+        }
+        
+        
         return ans;
     }
 };
+    
+    

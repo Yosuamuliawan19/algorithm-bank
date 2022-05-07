@@ -1,14 +1,14 @@
 class Solution {
 public:
-    
     int climbStairs(int n) {
-        vector<long long> memo(n+1);
-        for (int i=1;i<=n;i++){
-            if (i <= 2) memo[i] = i;
-            else memo[i] = memo[i-1] + memo[i-2] ;
-            
-            // cout << memo[i] <<endl;
+        vector<int> arr = vector<int>(n , 0);
+        arr[0] = 1;
+        for (int i=1;i<n;i++){
+            arr[i] = arr[i-1];
+            if (i != 1) arr[i] += arr[i-2];
+            else arr[i] += 1;
         }
-        return memo[n];
+        return arr[n-1];
     }
+    
 };

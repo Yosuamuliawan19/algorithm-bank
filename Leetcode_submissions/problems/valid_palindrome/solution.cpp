@@ -1,15 +1,24 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        int l = 0, r = s.length() - 1;
+        int l = 0, r = s.length()-1;
         while (r > l){
-            while (!isalnum(s[l]) && l <= r) l++;
-            while (!isalnum(s[r]) && l <= r) r--;
-            if (l >= r) break;
-            // cout << s[l] << " " << s[r] << endl;
-            if (toupper(s[l]) != toupper(s[r])) return 0;
-            l++;r--;
+            
+            if (!((s[l] >= 'A' && s[l] <= 'Z') || (s[l] >= 'a' && s[l] <= 'z')  || (s[l] >= '0' && s[l] <= '9')) ){
+                l++; continue;
+            }
+            if (!((s[r] >= 'A' && s[r] <= 'Z') || (s[r] >= 'a' && s[r] <= 'z') || (s[r] >= '0' && s[r] <= '9')) ){
+                r--; continue;
+            }
+            char a = s[l] >= 'a' ? s[l]-32: s[l];
+            char b = s[r] >= 'a' ? s[r]-32: s[r];
+        
+            // cout << s[l] << "  " << s[r] << endl;
+            // cout << a << "  " << b << endl;
+            if (a != b) return false;
+            
+            r--; l++;
         }
-        return 1;
+        return true;
     }
 };

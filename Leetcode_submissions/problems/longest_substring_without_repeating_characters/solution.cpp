@@ -1,21 +1,23 @@
 class Solution {
 public:
-    
-    int conv(char c){
-        return c - 32;
-    }
     int lengthOfLongestSubstring(string s) {
-        bool vis[200];
-        int ans = 0;
+        vector<int> arr = vector<int>(200, -1);
+        if (s.length() == 0) return 0;
+        int mn = 0, ans = 1;
         for (int i=0;i<s.length();i++){
-            memset(vis, 0, sizeof(vis));
-            int len = 1; vis[conv(s[i])] = 1;
-            for (int j=i+1;j<s.length();j++){
-                if (vis[conv(s[j])]) break;
-                len++; vis[conv(s[j])] = 1;
+            
+            int idx = s[i] - 32;
+          
+            
+            
+            if (arr[idx] != -1){
+                mn = max(mn, arr[idx] + 1);
             }
-            ans = max(ans, len);
+            arr[idx] = i;
+            ans = max(ans, i-mn+1);
         }
+        
+        
         return ans;
     }
 };

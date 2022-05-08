@@ -1,30 +1,27 @@
 class Solution {
 public:
-    int ans = 0, cur = 0, n, m;
-    vector<vector<int>> arr;
-    int dirx[4] = {1,0,-1,0};
-    int diry[4] = {0,1,0,-1};
-    void dfs(int x, int y){
-        arr[x][y] = 0;
-        cur ++;
+    vector<vector<int>> g;
+    int dirx[4] = {0, 0, 1, -1};
+    int diry[4] = {1, -1, 0, 0};
+    int dfs(int a, int b){
+        if ((a < 0 || a == g.size()) || (b < 0 || b == g[0].size())) return 0;
+        if (g[a][b] == 0) return 0;
+        g[a][b] = 0;
+        int ans = 1;
         for (int i=0;i<4;i++){
-            int a = x + dirx[i], b = y + diry[i];
-            if (a >= 0 && a < n && b >= 0 && b < m && arr[a][b] == 1){
-                dfs(a,b);
-            }
+            ans += dfs(a+ dirx[i], b + diry[i]);
         }
+        return ans;
     }
+    
     int maxAreaOfIsland(vector<vector<int>>& grid) {
-        this->arr = grid;
-        this->n = grid.size();
-        this->m = grid[0].size();
-        for (int i=0;i<n;i++){
-            for (int j=0;j<m;j++){
+        int ans = 0;
+        g = grid;
+        for (int i=0;i<grid.size();i++){
+            for (int j=0;j<grid[0].size();j++){
                 if (grid[i][j] == 1){
-                    cur = 0;
-                    dfs(i,j);
-                    ans = max(ans, cur);
-                }
+                    ans = max(ans, dfs(i, j));
+                }           
             }
         }
         return ans;

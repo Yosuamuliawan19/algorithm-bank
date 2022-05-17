@@ -22,7 +22,7 @@ class Solution:
             self.memo[balance] = ans
             return ans
         
-        
+                
         ans = dp(amount)
         if ans == self.INT_MAX:
             return -1
